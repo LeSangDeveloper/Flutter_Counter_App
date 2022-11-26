@@ -9,18 +9,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'logic/cubit/counter_cubit.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  @override
-  State<StatefulWidget> createState() => _MyAppState();
-
-}
-
-class _MyAppState extends State<MyApp> {
+class MyApp extends StatelessWidget {
+  MyApp({super.key});
 
   final AppRouter _router = AppRouter();
   // This widget is the root of your application.
@@ -36,13 +29,6 @@ class _MyAppState extends State<MyApp> {
         onGenerateRoute: _router.onGeneratorRoute,
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    _router.dispose();
   }
 
 }

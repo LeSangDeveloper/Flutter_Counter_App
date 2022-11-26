@@ -9,39 +9,21 @@ import '../screen/third_screen.dart';
 
 class AppRouter {
 
-  final CounterCubit _counterCubit = new CounterCubit();
-
   Route onGeneratorRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/':
         return MaterialPageRoute(
-            builder: (_) => BlocProvider.value(
-              value: _counterCubit,
-              child: const HomeScreen(title: 'Flutter Demo Home Page', color: Colors.blue),
-          ));
+            builder: (_) => const HomeScreen(title: 'Flutter Demo Home Page', color: Colors.blue));
       case '/second':
         return MaterialPageRoute(
-            builder: (_) =>  BlocProvider.value(
-              value: _counterCubit,
-              child: const SecondScreen(title: 'Second Screen', color: Colors.red),
-            ));
+            builder: (_) =>  const SecondScreen(title: 'Second Screen', color: Colors.red));
       case '/third':
         return MaterialPageRoute(
-            builder: (_) => BlocProvider.value(
-          value: _counterCubit,
-          child: const ThirdScreen(title: 'Third Screen', color: Colors.purple),
-        ));
+            builder: (_) => const ThirdScreen(title: 'Third Screen', color: Colors.purple));
       default:
         return MaterialPageRoute(
-            builder: (_) => BlocProvider.value(
-              value: _counterCubit,
-              child: const HomeScreen(title: 'Flutter Demo Home Page', color: Colors.blue),
-            ));
+            builder: (_) => const HomeScreen(title: 'Flutter Demo Home Page', color: Colors.blue));
     }
-  }
-
-  void dispose() {
-    _counterCubit.close();
   }
 
 }
