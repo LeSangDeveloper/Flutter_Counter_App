@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:counterapp/presentation/router/app_route.dart';
 import 'package:counterapp/presentation/screen/home_screen.dart';
 import 'package:counterapp/presentation/screen/second_screen.dart';
 import 'package:counterapp/presentation/screen/third_screen.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  final CounterCubit _counterCubit = CounterCubit();
+  final AppRouter _router = AppRouter();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -32,20 +33,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        routes: {
-          '/': (context) => BlocProvider.value(
-            value: _counterCubit,
-            child: const HomeScreen(title: 'Flutter Demo Home Page', color: Colors.blue),
-          ),
-          '/second': (context) => BlocProvider.value(
-            value: _counterCubit,
-            child: const SecondScreen(title: 'Second Screen', color: Colors.red),
-          ),
-          '/third': (context) => BlocProvider.value(
-            value: _counterCubit,
-            child: const ThirdScreen(title: 'Third Screen', color: Colors.purple),
-          ),
-        },
+        onGenerateRoute: _router.onGeneratorRoute,
       ),
     );
   }
@@ -54,7 +42,7 @@ class _MyAppState extends State<MyApp> {
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    _counterCubit.close();
+    _router.dispose();
   }
 
 }
